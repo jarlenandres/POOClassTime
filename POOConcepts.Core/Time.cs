@@ -4,45 +4,45 @@ public class Time
 {
     // Private attributes
     private int _hour;
-    private int _millisecond;
     private int _minute;
     private int _second;
+    private int _millisecond;
 
     // Constructor method with overloading
     public Time()
     {
         Hour = 0;
-        Millisecond = 0;
         Minute = 0;
         Second = 0;
+        Millisecond = 0;
     }
     public Time(int hour)
     {
         Hour = hour;
-        Millisecond = 0;
         Minute = 0;
         Second = 0;
+        Millisecond = 0;
     }
     public Time(int hour, int minute)
     {
         Hour = hour;
-        Millisecond = 0;
         Minute = minute;
         Second = 0;
+        Millisecond = 0;
     }
     public Time(int hour, int minute, int second)
     {
         Hour = hour;
-        Millisecond = 0;
         Minute = minute;
         Second = second;
+        Millisecond = 0;
     }
-    public Time(int hour, int millisecond, int minute, int second)
+    public Time(int hour, int minute, int second, int millisecond)
     {
         Hour = hour;
-        Millisecond = millisecond;
         Minute = minute;
         Second = second;
+        Millisecond = millisecond;
     }
 
     // Public properties
@@ -52,15 +52,6 @@ public class Time
         set
         {
             _hour = ValidHour(value);
-        }
-    }
-
-    public int Millisecond
-    {
-        get => _millisecond;
-        set
-        {
-            _millisecond = ValidMillisecond(value);
         }
     }
 
@@ -82,21 +73,28 @@ public class Time
         }
     }
 
+    public int Millisecond
+    {
+        get => _millisecond;
+        set
+        {
+            _millisecond = ValidMillisecond(value);
+        }
+    }
+
     //Overwrite ToString method
     public override string ToString()
     {
-        // Se asegura de usar las propiedades públicas para mantener la lógica de la clase
         DateTime dt = new DateTime(1, 1, 1, Hour, Minute, Second, Millisecond);
         return dt.ToString("hh:mm:ss.fff tt");
     }
 
     // Private methods
-
     private int ValidHour(int hour)
     {
         if (hour < 0 || hour > 23)
         {
-            throw new Exception($"La hora: {hour}, debe estar entre 0 y 23.");
+            throw new Exception($"The hour: {hour}, is not valid.");
         }
         return hour;
     }
@@ -105,7 +103,7 @@ public class Time
     {
         if (minute < 0 || minute > 59)
         {
-            throw new Exception($"El minuto: {minute}, debe estar entre 0 y 59.");
+            throw new Exception($"The minute: {minute}, is not valid.");
         }
         return minute;
     }
@@ -114,7 +112,7 @@ public class Time
     {
         if (second < 0 || second > 59)
         {
-            throw new Exception($"El segundo: {second}, debe estar entre 0 y 59.");
+            throw new Exception($"The second: {second}, is not valid.");
         }
         return second;
     }
@@ -123,7 +121,7 @@ public class Time
     {
         if (millisecond < 0 || millisecond > 999)
         {
-            throw new Exception($"El milisegundo: {millisecond}, debe estar entre 0 y 999.");
+            throw new Exception($"The millisecond: {millisecond}, is not valid.");
         }
         return millisecond;
     }
@@ -146,5 +144,21 @@ public class Time
     public int ToHours()
     {
         return Hour;
+    }
+    
+    public object Add(Time t)
+    {
+        int Milliseconds = this.ToMilliseconds() + t.ToMilliseconds();
+        int hours = (Milliseconds / 3600000) % 24;
+        int minutes = (Milliseconds / 60000) % 60;
+        int seconds = (Milliseconds / 1000) % 60;
+        int milliseconds = Milliseconds % 1000;
+        return new Time(hours, minutes, seconds, milliseconds);
+    }
+
+    public bool IsOtherDay(Time d)
+    {
+        int hour = this.Hour + d.Hour;
+        return (hour > 23);
     }
 }

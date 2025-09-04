@@ -15,7 +15,11 @@ try
         Console.WriteLine($"Time: {time}");
         Console.WriteLine($"\tMilliseconds: {time.ToMilliseconds(),15:N0}");
         Console.WriteLine($"\tSeconds     : {time.ToSeconds(),15:N0}");
-        Console.WriteLine($"\tMinutes: {time.ToMinutes(),15:N0}");
+        Console.WriteLine($"\tMinutes     : {time.ToMinutes(),15:N0}");
+        Console.WriteLine($"\tAdd         : {time.Add(t3),15:N0}");
+        Console.WriteLine($"\tIs other day: {time.IsOtherDay(t4)}");
+
+        Console.WriteLine();
     }
 
     var t6 = new Time(45, -7, 90, -87);
