@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="POOConcepts.Core.Time">
-    <Position X="2" Y="2" Width="2.5" />
+    <Position X="2.5" Y="0.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAIACAAAAACEACAEAAEgAAIEAEAIACIABAAAAAAwAgA=</HashCode>
+      <HashCode>AAIACAAAAACEACAEAAAgAAIEAEAIACIABAAAAAAwAgA=</HashCode>
       <FileName>Time.cs</FileName>
     </TypeIdentifier>
   </Class>

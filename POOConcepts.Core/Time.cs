@@ -141,11 +141,6 @@ public class Time
         return (Hour * 60) + Minute;
     }
 
-    public int ToHours()
-    {
-        return Hour;
-    }
-    
     public object Add(Time t)
     {
         int Milliseconds = this.ToMilliseconds() + t.ToMilliseconds();
