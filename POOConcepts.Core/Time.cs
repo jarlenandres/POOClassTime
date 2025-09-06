@@ -49,37 +49,25 @@ public class Time
     public int Hour
     {
         get => _hour;
-        set
-        {
-            _hour = ValidHour(value);
-        }
+        set => _hour = ValidHour(value);
     }
 
     public int Minute
     {
         get => _minute;
-        set
-        {
-            _minute = ValidMinute(value);
-        }
+        set => _minute = ValidMinute(value);
     }
 
     public int Second
     {
         get => _second;
-        set
-        {
-            _second = ValidSecond(value);
-        }
+        set => _second = ValidSecond(value);
     }
 
     public int Millisecond
     {
         get => _millisecond;
-        set
-        {
-            _millisecond = ValidMillisecond(value);
-        }
+        set => _millisecond = ValidMillisecond(value);
     }
 
     //Overwrite ToString method
@@ -126,6 +114,7 @@ public class Time
         return millisecond;
     }
 
+    // Public methods
     public int ToMilliseconds()
     {
         return (Hour * 3600000) + (Minute * 60000) + (Second * 1000) + Millisecond;
